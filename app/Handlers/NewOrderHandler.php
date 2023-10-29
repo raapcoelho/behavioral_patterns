@@ -15,25 +15,24 @@ use App\Entities\Taxes\Icms;
 use App\Entities\Taxes\Ipi;
 use App\Entities\Taxes\Pis;
 use App\Handlers\CalculateDiscount;
+use App\Observers\Order\OrderObserverInterface;
 use App\Strategies\CalculateTaxe;
 
 class NewOrderHandler{
 
-    private $total;
-    private $discount;
-    private $products;
-    private $customer;
+    private array $orderPostActions;
 
     public function __construct()
     {
-        
+
+    }
+
+    public function addAction(OrderObserverInterface $orderObserverInterface)
+    {
+        $this->orderPostActions[] = $orderObserverInterface;
     }
 
     public function execute(NewOrder $newOrder) : void{
-        
-
-        
-        
         
         $order = new Order();
         
@@ -57,6 +56,9 @@ class NewOrderHandler{
         $invoiceSp = new InvoiceSp();
         $invoiceSpCreated = $invoiceSp->generateInvoice($newOrder->getCustomer(), $order);
 
+        foreach($this->orderPostActions as $orderPostAction){
+            $orderPostAction->execute($order);
+        }
 
     }
 }

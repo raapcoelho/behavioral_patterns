@@ -21,3 +21,11 @@ Este projeto tem como objetivo a aplicação prática dos padrões comportamenta
 ### Command Pattern
 - **Descrição**: O padrão Command encapsula uma solicitação como um objeto, permitindo parametrizar os clientes com solicitações, enfileirá-las, registrar seu histórico e fornecer funcionalidade de desfazer.
 - **Utilização**: Realiza um novo pedido.
+
+### Observer Pattern
+- **Descrição**: O padrão Observer permite a definição de uma relação de um-para-muitos entre objetos, de modo que quando o estado de um objeto muda, todos os seus observadores são notificados e atualizados automaticamente.
+- **Utilização**: Armazena o pedido no banco, envia um e-mail e gera um log.
+
+### Iterator Pattern
+- **Descrição**: O padrão Iterator é usado para fornecer uma maneira de acessar os elementos de um objeto agregado sequencialmente, sem expor a representação subjacente. Isso é especialmente útil para criar e percorrer listas de produtos, permitindo iterações eficientes e flexíveis.
+- **Utilização**: Cria uma lista de produtos

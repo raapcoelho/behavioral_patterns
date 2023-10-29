@@ -5,13 +5,14 @@ namespace App\Commands;
 use App\Entities\Customer\Customer;
 use App\Entities\Order;
 use App\Entities\Product;
+use App\Entities\ProductList;
 
 class NewOrder{
 
     private float $total;
     private float $discount;
     private float $taxes;
-    private array $products;
+    private ProductList $products;
     private Customer $customer;
 
     public function __construct(Order $order)

@@ -13,7 +13,7 @@ class Order{
     public float $total;
     public float $discount;
     public float $taxes;
-    public array $products;
+    public ProductList $products;
     public OrderStatusAbstract $status;
     public Customer $customer;
 
@@ -22,13 +22,8 @@ class Order{
         $this->total = 0;
         $this->discount = 0;
         $this->taxes = 0;
-        $this->products = array();
+        
         $this->status = new Pending();
-    }
-
-    public function addProduct(Product $product)
-    {
-        $this->products[] = $product;
     }
 
     public function concluded(){
